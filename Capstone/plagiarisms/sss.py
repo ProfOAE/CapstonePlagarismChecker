@@ -36,7 +36,9 @@ def check_plagiarism():
                 sim_score = round(sim_score, 1)
                 student_pair = sorted((os.path.splitext(student_a)[0], os.path.splitext(student_b)[0]))
                 res = (student_pair[0]+' similar to '+ student_pair[1])
+                res = res.split("/")[-1]
                 plagiarism_results[res] = sim_score
+                
     api = json.dumps(plagiarism_results)
     return api
 print(check_plagiarism())
